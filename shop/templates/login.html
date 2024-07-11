@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+    Login Page
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='Login:out.css') }}">
+<body class="text-center"> 
+    <br>
+    <div class="container">
+        <form method="POST" class="form-signin" style="color:white">
+            {{ form.hidden_tag() }}
+            <img class="mb-4" src="https://st2.depositphotos.com/1012338/6218/v/600/depositphotos_62188249-stock-illustration-bodybuilding-shield.jpg" alt="" width="150" height="150">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Please Login
+            </h1>
+
+
+            {{ form.username.label() }}
+            {{ form.username(class="form-control", placeholder="User Name") }}
+
+            {{ form.password.label() }}
+            {{ form.password(class="form-control", placeholder="Password") }}
+
+
+
+
+            <div class="checkbox mb-3">
+                <br>
+               <h6>Do not have an account?</h6>
+               <a class="btn btn-sm btn-secondary" href="{{ url_for('register_page') }}">Register</a>
+            </div>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+        </form>
+    </div>
+</body>
+{% endblock %}

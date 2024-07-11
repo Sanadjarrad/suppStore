@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}
+Products Page
+{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='Login:out.css') }}">
+<div class="row" style="margin-top:20px; margin-left:20px">
+   <div class="col-8">
+       <h2> Products on sale now! </h2>
+       <p> Click on the products to go through with the purchase </p>
+       <br>
+      <table class="table table-hover table-dark">
+         <thead>
+            <tr>
+               <!-- Your Columns HERE -->
+               <th scope="col">ID</th>
+               <th scope="col">Name</th>
+               <th scope="col">Price</th>
+               <th scope="col">Options</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for item in items %}
+            {% include 'includes/items_modals.html' %}
+            <tr>
+               <td>{{ item.id }}</td>
+               <td>{{ item.item_name }}</td>
+               <td>{{ item.item_price }}$</td>
+               <td>
+                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
+                  <br>
+                  <br>
+                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-EcologicalInfo-{{ item.id }}">Ecological Footprint</button>
+                  <br>
+                  <br>
+                  <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Instant Purchase</button>
+                  <br>
+                  <br>
+                  <div class="center">
+                     <div class="buttons d-flex flex-row">
+                         <div class="cart"> </div> <button class="btn btn-success cart-button px-5"><span class="dot"></span>Add to cart </button>
+                     </div>
+                 </div>
+                  <div class="gallery_item">
+                    {% if item.item_name == "Optimum nutrition Gold Standard Whey Protein" %}
+                            <td> <img src="https://m.media-amazon.com/images/I/711z5JiGWDL._AC_SS450_.jpg" width="150" height="150"> </td>
+                        {% elif item.item_name == "Optimum nutrition Gold Standard Casein Protein" %}
+                            <td> <img src="https://images.hollandandbarrettimages.co.uk/productimages/HB/724/076740_A.jpg" width="150" height="150"> </td>
+                        {% elif item.item_name == "Huge Supplements Wrecked Pre-Workout" %}
+                            <td> <img src="https://cdn.zmescience.com/wp-content/uploads/2021/03/Wrecked-Strongest-Pre-Workout.png" width="150" height="150"> </td>
+                        {% elif item.item_name == "BiotechUSA Creatine Monohydrate" %}
+                            <td> <img src="https://m.media-amazon.com/images/I/6128RrN1wsL._AC_SL1415_.jpg" width="150" height="150"> </td>
+                        {% elif item.item_name == "MuscleTech Mass Gainer" %}
+                            <td> <img src="https://s3.images-iherb.com/msc/msc70885/l/42.jpg" width="150" height="150"> </td>
+                    {% endif %}
+                </div>
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+</div>
+{% endblock %}
