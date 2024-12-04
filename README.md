@@ -10,7 +10,7 @@ This is a Flask-based web application designed to provide functionality for an o
 - wsgi.py: WSGI configuration for deployment.
 - requirements.txt: Lists the Python dependencies required for the application.
 - shop/: Contains the core application logic, routes, templates, and static files.
-- start.sh: Shell script to automate the application startup process.
+
 
 
 ## Features
